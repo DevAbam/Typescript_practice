@@ -3,9 +3,15 @@ import "./App.css";
 import TodoItem from "./components/TodoItem";
 import Top from "./components/Top";
 
+type task = {
+  id: number;
+  title: string;
+  completed: boolean;
+};
+
 function App() {
   const [todoTask, setTodoTask] = useState<string>("");
-  const [todoArray, setTodoArray] = useState<string[]>([]);
+  const [todoArray, setTodoArray] = useState<task[] | []>([]);
 
   return (
     <>
@@ -19,7 +25,7 @@ function App() {
         />
       </div>
       <div className="todo_section">
-        {todoArray.map((todo, index) => {
+        {todoArray.map((todo: task, index: number) => {
           return (
             <TodoItem
               key={index}
@@ -31,6 +37,7 @@ function App() {
           );
         })}
       </div>
+      <div className="CompletedcountsBox"></div>
     </>
   );
 }
